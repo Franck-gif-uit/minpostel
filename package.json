@@ -1,0 +1,16 @@
+{
+  "name": "portail-recensement-box-cameroun",
+  "version": "1.0.0",
+  "description": "Portail national de recensement des box internet — projet étudiant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["recensement", "cameroun", "cybersecurite", "education"],
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "express": "^4.21.0",
+    "socket.io": "^4.8.0"
+  }
+}

