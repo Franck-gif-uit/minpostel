@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentification — Espace habilité</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="flag-strip" aria-hidden="true"></div>
+    <div class="gov-top">
+      <span class="gov-top__motto">République du Cameroun · Paix – Travail – Patrie</span>
+      <span class="gov-top__secure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M12 1L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-4z"
+            fill="currentColor"
+            opacity="0.9"
+          />
+        </svg>
+        Accès restreint
+      </span>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <div class="site-nav__inner">
+        <div class="site-nav__links">
+          <a href="/index.html">Accueil</a>
+          <a href="/form.html">Enregistrement</a>
+          <a href="/admin.html" class="is-active">Espace habilité</a>
+        </div>
+      </div>
+    </nav>
+    <header class="header-main">
+      <div class="header-inner">
+        <div class="logo-block">
+          <img
+            class="coat"
+            src="/images/coat-cameroon.svg"
+            width="56"
+            height="66"
+            alt="Armoiries de la République du Cameroun"
+          />
+          <div class="logo-text">
+            <span class="line1">Centre national de traitement</span>
+            <span class="line2">Authentification — espace réservé</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="card" style="max-width: 520px">
+        <h1 class="page-title" style="text-align: center">Connexion</h1>
+        <p style="text-align: center; color: var(--muted); margin: 0 0 1.25rem">
+          Veuillez vous authentifier pour accéder au tableau de suivi.
+        </p>
+
+        <form id="admin-login-form" class="form-grid" novalidate>
+          <div>
+            <label for="username">Identifiant</label>
+            <input id="username" name="username" type="text" autocomplete="username" required />
+          </div>
+          <div>
+            <label for="password">Mot de passe</label>
+            <input id="password" name="password" type="text" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%">Se connecter</button>
+        </form>
+      </div>
+    </main>
+
+    <div id="toast-host" class="toast-host" aria-live="assertive" aria-atomic="true"></div>
+
+    <footer class="site-footer">
+      <p style="margin: 0">Accès réservé — toute tentative est enregistrée.</p>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
+

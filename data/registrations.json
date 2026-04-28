@@ -1,0 +1,32 @@
+[
+  {
+    "ownerName": "Test User",
+    "region": "Centre",
+    "city": "Yaoundé",
+    "network": "MTN",
+    "wifiName": "HomeWiFi",
+    "boxPassword": "••••••••",
+    "submittedAt": "2026-04-28T02:21:55.695Z",
+    "id": "33133fb0-0bad-45c0-8ad8-09a0dd45cc28"
+  },
+  {
+    "ownerName": "sf",
+    "region": "Sud",
+    "city": "Lolodorf",
+    "network": "Orange",
+    "wifiName": "sfs",
+    "boxPassword": "••••••••",
+    "submittedAt": "2026-04-28T02:42:35.350Z",
+    "id": "824537e9-9d2d-44a9-8b18-8e733b9c818d"
+  },
+  {
+    "ownerName": "ad",
+    "region": "Ouest",
+    "city": "Bangangté",
+    "network": "Starlink",
+    "wifiName": "dd",
+    "boxPassword": "d",
+    "submittedAt": "2026-04-28T02:49:32.078Z",
+    "id": "b99d75ad-e4bf-43ab-9ab4-bf47e0278ceb"
+  }
+]

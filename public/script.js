@@ -72,6 +72,68 @@
     return d.innerHTML;
   }
 
+  function showToast(toastHost, title, message) {
+    if (!toastHost) return;
+    toastHost.innerHTML = "";
+    var wrap = document.createElement("div");
+    wrap.className = "toast";
+    wrap.setAttribute("role", "alert");
+    wrap.innerHTML =
+      "<div class=\"toast__icon\" aria-hidden=\"true\">!</div>" +
+      "<div class=\"toast__body\">" +
+      "<p class=\"toast__title\">" +
+      escapeHtml(title) +
+      "</p>" +
+      "<p class=\"toast__msg\">" +
+      escapeHtml(message) +
+      "</p>" +
+      "</div>" +
+      "<button type=\"button\" class=\"toast__close\" aria-label=\"Fermer\">×</button>";
+
+    var btn = wrap.querySelector(".toast__close");
+    btn.addEventListener("click", function () {
+      wrap.remove();
+    });
+    toastHost.appendChild(wrap);
+    setTimeout(function () {
+      if (wrap.parentNode) wrap.remove();
+    }, 12000);
+  }
+
+  /* -------- Login admin -------- */
+  if (path.endsWith("admin-login.html")) {
+    var loginForm = document.getElementById("admin-login-form");
+    var toastHostLogin = document.getElementById("toast-host");
+    if (!loginForm) return;
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var u = (document.getElementById("username") || {}).value || "";
+      var p = (document.getElementById("password") || {}).value || "";
+      if (!u.trim() || !p) {
+        showToast(toastHostLogin, "Champs requis", "Veuillez renseigner l’identifiant et le mot de passe.");
+        return;
+      }
+
+      fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: u.trim(), password: p }),
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error("bad");
+          return r.json();
+        })
+        .then(function () {
+          window.location.href = "/admin.html";
+        })
+        .catch(function () {
+          showToast(toastHostLogin, "Accès refusé", "Identifiants invalides. Veuillez réessayer.");
+        });
+    });
+    return;
+  }
+
   /* -------- Page résultat -------- */
   if (path.endsWith("result.html")) {
     var refSpan = document.getElementById("ref-id");
@@ -106,7 +168,7 @@
       }
     }
 
-    socket.on("new-registration", function (data) {
+    function insertRow(data) {
       if (emptyRow && emptyRow.parentNode) emptyRow.parentNode.removeChild(emptyRow);
 
       var pwd =
@@ -137,6 +199,20 @@
         "</td>";
 
       tbody.insertBefore(tr, tbody.firstChild);
+    }
+
+    socket.on("bootstrap", function (list) {
+      if (!Array.isArray(list)) return;
+      list
+        .slice()
+        .reverse()
+        .forEach(function (r) {
+          insertRow(r);
+        });
+    });
+
+    socket.on("new-registration", function (data) {
+      insertRow(data);
     });
     return;
   }
@@ -152,32 +228,8 @@
     var citySel = document.getElementById("city");
     var toastHost = document.getElementById("toast-host");
 
-    function showToast(title, message) {
-      if (!toastHost) return;
-      toastHost.innerHTML = "";
-      var wrap = document.createElement("div");
-      wrap.className = "toast";
-      wrap.setAttribute("role", "alert");
-      wrap.innerHTML =
-        "<div class=\"toast__icon\" aria-hidden=\"true\">!</div>" +
-        "<div class=\"toast__body\">" +
-        "<p class=\"toast__title\">" +
-        escapeHtml(title) +
-        "</p>" +
-        "<p class=\"toast__msg\">" +
-        escapeHtml(message) +
-        "</p>" +
-        "</div>" +
-        "<button type=\"button\" class=\"toast__close\" aria-label=\"Fermer\">×</button>";
-
-      var btn = wrap.querySelector(".toast__close");
-      btn.addEventListener("click", function () {
-        wrap.remove();
-      });
-      toastHost.appendChild(wrap);
-      setTimeout(function () {
-        if (wrap.parentNode) wrap.remove();
-      }, 12000);
+    function showToastLocal(title, message) {
+      showToast(toastHost, title, message);
     }
 
     function fillRegions() {
@@ -248,7 +300,7 @@
       var pwdConfirm = (document.getElementById("pwdConfirm") || {}).value || "";
 
       if (pwdVal !== pwdConfirm) {
-        showToast(
+        showToastLocal(
           "Mots de passe différents",
           "Les mots de passe ne correspondent pas. Vérifiez la saisie dans les deux champs et validez à nouveau."
         );
@@ -260,7 +312,10 @@
       }
 
       if (!ownerName.trim() || !region || !city || !network || !wifiName.trim()) {
-        showToast("Formulaire incomplet", "Veuillez renseigner tous les champs obligatoires avant validation.");
+        showToastLocal(
+          "Formulaire incomplet",
+          "Veuillez renseigner tous les champs obligatoires avant validation."
+        );
         return;
       }
 
